@@ -3,11 +3,13 @@
   "builds": [
     { "src": "server.js", "use": "@vercel/node" },
     { "src": "index.html", "use": "@vercel/static" },
-    { "src": "raphael.jpg", "use": "@vercel/static" }
+    { "src": "raphael.jpg", "use": "@vercel/static" },
+    { "src": "raphael-core.png", "use": "@vercel/static" }
   ],
   "routes": [
     { "src": "/api", "dest": "/server.js" },
     { "src": "/raphael.jpg", "dest": "/raphael.jpg" },
+    { "src": "/raphael-core.png", "dest": "/raphael-core.png" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
