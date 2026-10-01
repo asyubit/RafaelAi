@@ -14,37 +14,42 @@ html,body{margin:0;min-height:100%;background:#02040a;color:#fff;font-family:-ap
 body{min-height:100dvh;overflow:hidden;background:radial-gradient(circle at 50% 28%,#153b5f 0,#071522 34%,#02040a 74%)}
 .app{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:max(16px,env(safe-area-inset-top)) 14px max(18px,env(safe-area-inset-bottom))}
 .brand{position:absolute;top:max(15px,env(safe-area-inset-top));z-index:10;font-size:11px;letter-spacing:.22em;color:#ddfaffaa}
-.stage{width:min(94vw,480px);height:min(68dvh,650px);position:relative;display:grid;place-items:center;perspective:1200px}
-.aura,.halo{position:absolute;border-radius:50%;pointer-events:none}
-.aura{width:96%;aspect-ratio:1;background:conic-gradient(from 20deg,#6ae7ff00,#69e8ff66,#cda9ff5c,#ffd88c55,#6ae7ff00);filter:blur(30px);opacity:calc(.35 + var(--pulse)*.5);animation:spin 13s linear infinite}
-.halo{width:78%;aspect-ratio:1;border:1px solid #ccf8ff88;box-shadow:0 0 calc(22px + var(--pulse)*48px) #6ee9ff88,inset 0 0 35px #a5edff2d;animation:spinBack 22s linear infinite}
-.card{width:84%;height:78%;position:relative;transform-style:preserve-3d;animation:living 6.2s ease-in-out infinite;filter:drop-shadow(0 30px 45px #000b)}
-.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:40px;border:1px solid #e0fbff66;box-shadow:0 0 calc(14px + var(--pulse)*42px) #62e4ff66,inset 0 0 50px #b2f7ff20;transform:translateZ(40px)}
-.glass{position:absolute;inset:-2%;border-radius:43px;transform:translateZ(65px);background:radial-gradient(circle at var(--mx) var(--my),#fff7 0 2%,#b9f8ff28 10%,transparent 36%),linear-gradient(120deg,transparent 18%,#dafaff24 49%,transparent 72%);mix-blend-mode:screen}
-.ring{position:absolute;left:50%;top:50%;width:112%;aspect-ratio:1;transform:translate(-50%,-50%) translateZ(18px) rotateX(70deg);border:2px solid #a1f1ff8c;border-radius:50%;box-shadow:0 0 30px #75e9ffa8;animation:ring 9s linear infinite}
-.ring.r2{width:90%;transform:translate(-50%,-50%) translateZ(25px) rotateX(76deg) rotateY(22deg);animation-duration:13s;animation-direction:reverse;opacity:.65}
-.orb{position:absolute;width:11px;height:11px;border-radius:50%;background:#fff;box-shadow:0 0 20px 7px #7feaff;left:50%;top:6%;animation:orbit 7.5s linear infinite;transform-origin:0 235px}
-.particle{position:absolute;width:4px;height:4px;border-radius:50%;background:#dffcff;box-shadow:0 0 14px #72eaff;animation:float 5s ease-in-out infinite}
-.p1{left:13%;top:28%}.p2{right:11%;top:38%;animation-delay:-1.4s}.p3{left:22%;bottom:18%;animation-delay:-3.1s}
-@keyframes spin{to{transform:rotate(360deg)}}@keyframes spinBack{to{transform:rotate(-360deg)}}
-@keyframes ring{to{transform:translate(-50%,-50%) translateZ(18px) rotateX(70deg) rotateZ(360deg)}}
-@keyframes orbit{to{transform:rotate(360deg)}}@keyframes float{0%,100%{transform:translateY(0) scale(.8);opacity:.35}50%{transform:translateY(-22px) scale(1.4);opacity:1}}
-@keyframes living{0%,100%{transform:rotateX(-2deg) rotateY(-5deg) translateY(4px) scale(.986)}25%{transform:rotateX(2deg) rotateY(3deg) translateY(-3px) scale(1.005)}50%{transform:rotateX(1deg) rotateY(6deg) translateY(-8px) scale(1.016)}75%{transform:rotateX(-2deg) rotateY(-1deg) translateY(-2px) scale(1.002)}}
+.stage{width:min(94vw,480px);height:min(68dvh,650px);position:relative;display:grid;place-items:center;perspective:1300px}
+.coreWrap{width:84%;aspect-ratio:1;position:relative;transform-style:preserve-3d;animation:living 7s ease-in-out infinite;filter:drop-shadow(0 30px 50px #000b)}
+.core{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;transform:translateZ(60px);box-shadow:0 0 calc(24px + var(--pulse)*55px) #6ee9ff88}
+.coreGlow{position:absolute;inset:-5%;border-radius:50%;transform:translateZ(20px);background:radial-gradient(circle at 50% 50%,transparent 42%,#6fe9ff22 62%,transparent 78%);filter:blur(10px);animation:pulseGlow 4.6s ease-in-out infinite;pointer-events:none}
+.ring1,.ring2{position:absolute;left:50%;top:50%;border-radius:50%;pointer-events:none}
+.ring1{width:115%;aspect-ratio:1;transform:translate(-50%,-50%) translateZ(10px) rotateX(68deg);border:2px solid #b8f5ff88;box-shadow:0 0 28px #66e8ff99;animation:ringA 12s linear infinite}
+.ring2{width:92%;aspect-ratio:1;transform:translate(-50%,-50%) translateZ(30px) rotateX(74deg) rotateY(24deg);border:1px solid #ffe5a888;box-shadow:0 0 18px #ffd98c66;animation:ringB 17s linear infinite reverse}
+.shine{position:absolute;inset:-1%;border-radius:50%;transform:translateZ(95px);background:radial-gradient(circle at var(--mx) var(--my),#fff8 0 1.5%,#b9f8ff2b 10%,transparent 32%),linear-gradient(120deg,transparent 18%,#dafaff1f 48%,transparent 70%);mix-blend-mode:screen;pointer-events:none}
+@keyframes living{
+  0%,100%{transform:rotateX(-4deg) rotateY(-6deg) translateY(5px) scale(.985)}
+  25%{transform:rotateX(2deg) rotateY(4deg) translateY(-2px) scale(1.005)}
+  50%{transform:rotateX(4deg) rotateY(7deg) translateY(-8px) scale(1.018)}
+  75%{transform:rotateX(-2deg) rotateY(-2deg) translateY(-2px) scale(1.004)}
+}
+@keyframes pulseGlow{0%,100%{opacity:.45;transform:translateZ(20px) scale(.97)}50%{opacity:.95;transform:translateZ(20px) scale(1.035)}}
+@keyframes ringA{to{transform:translate(-50%,-50%) translateZ(10px) rotateX(68deg) rotateZ(360deg)}}
+@keyframes ringB{to{transform:translate(-50%,-50%) translateZ(30px) rotateX(74deg) rotateY(24deg) rotateZ(360deg)}}
 .hud{width:min(94vw,520px);padding:14px 15px 16px;border:1px solid #ffffff24;border-radius:24px;background:#07111be0;backdrop-filter:blur(18px);box-shadow:0 18px 55px #0009;text-align:center;z-index:4}
 .status{font-size:22px;font-weight:800}.sub{min-height:42px;margin-top:6px;color:#cadde8;font-size:14px;line-height:1.45;display:flex;align-items:center;justify-content:center}
 .btn{margin-top:10px;width:100%;min-height:54px;border:0;border-radius:18px;background:linear-gradient(180deg,#eefcff,#bceefa);color:#06202a;font-size:17px;font-weight:800;box-shadow:0 8px 24px #50dfff24}
 .btn.active{background:linear-gradient(180deg,#fff2cc,#ffd78e)}
 .small{margin-top:8px;font-size:11px;color:#91a7b6}
-.speaking .card{animation-duration:2.3s}.speaking .aura{animation-duration:4s}.speaking .halo{animation-duration:7s}
+.speaking .coreWrap{animation-duration:2.4s}.speaking .core{box-shadow:0 0 85px #78ecffcc}.speaking .coreGlow{animation-duration:1.7s}
 </style>
 </head>
 <body>
 <div class="app" id="app">
 <div class="brand">RAPHAEL · VOICE AI</div>
 <div class="stage" id="stage">
-  <div class="aura"></div><div class="halo"></div><div class="orb"></div>
-  <div class="particle p1"></div><div class="particle p2"></div><div class="particle p3"></div>
-  <div class="card"><img class="photo" src="/raphael.jpg" alt="Raphael"><div class="glass"></div><div class="ring"></div><div class="ring r2"></div></div>
+  <div class="coreWrap">
+    <img class="core" src="/raphael-core.png" alt="Raphael AI Core">
+    <div class="coreGlow"></div>
+    <div class="ring1"></div>
+    <div class="ring2"></div>
+    <div class="shine"></div>
+  </div>
 </div>
 <section class="hud">
   <div class="status" id="status">待機中</div>
